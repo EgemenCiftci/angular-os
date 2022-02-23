@@ -1,0 +1,13 @@
+.window {
+  height: 300px;
+  width: 300px;
+  background-color: white;
+  left: 10px;
+  top: 10px;
+  z-index: 100000;
+}
+
+header {
+  height: 32px;
+  background-color: black;
+}

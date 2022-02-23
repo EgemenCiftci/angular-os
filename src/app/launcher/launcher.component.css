@@ -1,0 +1,8 @@
+footer {
+  height: 48px;
+  background-color: black;
+}
+
+.caret-off::after {
+  display: none;
+}
