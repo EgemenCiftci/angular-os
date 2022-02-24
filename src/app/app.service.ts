@@ -1,6 +1,5 @@
-import { ComponentRef, Injectable } from '@angular/core';
+import { ComponentRef, Injectable, ViewContainerRef } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { AppComponent } from './app.component';
 import { Application } from './application';
 import { WindowComponent } from './window/window.component';
 
@@ -8,7 +7,7 @@ import { WindowComponent } from './window/window.component';
   providedIn: 'root',
 })
 export class AppService {
-  appComponent: AppComponent;
+  container: ViewContainerRef;
   windowComponentRefs: Map<number, ComponentRef<WindowComponent>> = new Map<
     number,
     ComponentRef<WindowComponent>
@@ -29,9 +28,7 @@ export class AppService {
 
   addWindow(iconName: string, title: string, src: string) {
     const windowRef =
-      this.appComponent.container.createComponent<WindowComponent>(
-        WindowComponent
-      );
+      this.container.createComponent<WindowComponent>(WindowComponent);
     const id = Date.now();
     windowRef.instance.id = id;
     windowRef.instance.iconName = iconName;
@@ -43,9 +40,7 @@ export class AppService {
   removeWindow(id: number) {
     const windowRef = this.windowComponentRefs.get(id);
     if (windowRef) {
-      this.appComponent.container.remove(
-        this.appComponent.container.indexOf(windowRef.hostView)
-      );
+      this.container.remove(this.container.indexOf(windowRef.hostView));
       this.windowComponentRefs.delete(id);
     }
   }
