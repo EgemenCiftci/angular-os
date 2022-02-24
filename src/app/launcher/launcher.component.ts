@@ -1,5 +1,4 @@
-import { Component, Host, OnInit, ViewContainerRef } from '@angular/core';
-import { AppComponent } from '../app.component';
+import { Component, OnInit } from '@angular/core';
 import { AppService } from '../app.service';
 import { Application } from '../application';
 
@@ -20,7 +19,7 @@ export class LauncherComponent implements OnInit {
   ngOnInit() {}
 
   showApplication(application: Application) {
-    this.appService.appComponent.addWindow(
+    this.appService.addWindow(
       application.iconName,
       application.title,
       application.src

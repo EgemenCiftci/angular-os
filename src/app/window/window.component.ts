@@ -17,6 +17,6 @@ export class WindowComponent implements OnInit {
   ngOnInit() {}
 
   close() {
-    this.appService.appComponent.removeWindow(this.id);
+    this.appService.removeWindow(this.id);
   }
 }
