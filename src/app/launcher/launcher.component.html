@@ -20,6 +20,13 @@
           >
             <i [class]="a.iconName ?? 'bi-window'"></i> {{ a.title }}
           </button>
+          <div class="dropdown-divider"></div>
+          <button ngbDropdownItem class="btn">
+            <i class="bi-gear-fill"></i> Settings
+          </button>
+          <button ngbDropdownItem class="btn">
+            <i class="bi-box-arrow-left"></i> Logout
+          </button>
         </ul>
       </div>
       <button
@@ -29,21 +36,6 @@
         [title]="kv.value.instance.title"
       >
         <i [class]="kv.value.instance.iconName ?? 'bi-window'"></i>
-      </button>
-      <div class="dropdown-divider"></div>
-      <button
-        class="btn h-100 text-white caret-off"
-        style="width:48px"
-        title="Settings"
-      >
-        <i class="bi-gear-fill"></i>
-      </button>
-      <button
-        class="btn h-100 text-white caret-off"
-        style="width:48px"
-        title="Logout"
-      >
-        <i class="bi-box-arrow-left"></i>
       </button>
     </div>
     <div class="flex-fill"></div>
