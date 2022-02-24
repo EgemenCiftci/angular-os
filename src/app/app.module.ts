@@ -10,7 +10,6 @@ import { LauncherComponent } from './main/launcher/launcher.component';
 import { WindowComponent } from './window/window.component';
 import { MainComponent } from './main/main.component';
 import { LoginComponent } from './login/login.component';
-import { SettingsComponent } from './main/settings/settings.component';
 
 @NgModule({
   imports: [
@@ -26,7 +25,6 @@ import { SettingsComponent } from './main/settings/settings.component';
     LoginComponent,
     LauncherComponent,
     WindowComponent,
-    SettingsComponent,
   ],
   bootstrap: [AppComponent],
 })
