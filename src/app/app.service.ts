@@ -28,7 +28,7 @@ export class AppService {
 
   addWindow(iconName: string, title: string, src: string) {
     const windowRef =
-      this.container.createComponent<WindowComponent>(WindowComponent);
+      this.container.createComponent<WindowComponent>(WindowComponent as any);
     const id = Date.now();
     windowRef.instance.id = id;
     windowRef.instance.iconName = iconName;
