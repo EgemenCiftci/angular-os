@@ -26,22 +26,24 @@ export class AppService {
 
   constructor(private sanitizer: DomSanitizer) {}
 
-  addWindow(iconName: string, title: string, src: string) {
-    const windowRef =
-      this.container.createComponent<WindowComponent>(WindowComponent as any);
+  addWindow(application: Application) {
+    const windowRef = this.container.createComponent<WindowComponent>(
+      WindowComponent as any
+    );
     const id = Date.now();
-    windowRef.instance.id = id;
-    windowRef.instance.iconName = iconName;
-    windowRef.instance.title = title;
-    windowRef.instance.src = this.sanitizer.bypassSecurityTrustResourceUrl(src);
+    application.id = id;
+    application.src = this.sanitizer.bypassSecurityTrustResourceUrl(
+      application.src
+    );
+    windowRef.instance.application = application;
     this.windowComponentRefs.set(id, windowRef);
   }
 
-  removeWindow(id: number) {
-    const windowRef = this.windowComponentRefs.get(id);
+  removeWindow(application: Application) {
+    const windowRef = this.windowComponentRefs.get(application.id);
     if (windowRef) {
       this.container.remove(this.container.indexOf(windowRef.hostView));
-      this.windowComponentRefs.delete(id);
+      this.windowComponentRefs.delete(application.id);
     }
   }
 }

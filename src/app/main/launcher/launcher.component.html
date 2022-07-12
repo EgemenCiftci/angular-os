@@ -33,9 +33,10 @@
         *ngFor="let kv of appService.windowComponentRefs | keyvalue"
         class="btn h-100 text-white caret-off"
         style="width:48px"
-        [title]="kv.value.instance.title"
+        [title]="kv.value.instance.application.title"
+        (click)="restoreApplication(kv.value.instance.application)"
       >
-        <i [class]="kv.value.instance.iconName ?? 'bi-window'"></i>
+        <i [class]="kv.value.instance.application.iconName ?? 'bi-window'"></i>
       </button>
     </div>
     <div class="flex-fill"></div>

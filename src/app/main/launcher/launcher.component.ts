@@ -19,10 +19,10 @@ export class LauncherComponent implements OnInit {
   ngOnInit() {}
 
   showApplication(application: Application) {
-    this.appService.addWindow(
-      application.iconName,
-      application.title,
-      application.src
-    );
+    this.appService.addWindow(application);
+  }
+
+  restoreApplication(application: Application) {
+    application.isHidden = false;
   }
 }

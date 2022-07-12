@@ -1,7 +1,10 @@
 export class Application {
   constructor(
-    public src: string,
+    public src: any,
+    public id?: number,
     public title?: string,
-    public iconName?: string
+    public iconName?: string,
+    public isHidden?: boolean,
+    public isMaximized?: boolean
   ) {}
 }

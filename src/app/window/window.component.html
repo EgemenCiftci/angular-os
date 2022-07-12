@@ -2,19 +2,23 @@
   class="window d-flex flex-column user-select-none position-absolute"
   cdkDrag
   cdkDragBoundary=".drag-boundary"
+  [style.visibility]="application.isHidden ? 'hidden' : 'visible'"
 >
   <header class="d-flex flex-row text-white" cdkDragHandle>
     <div class="flex-fill h-100 p-1">
-      <i [class]="iconName ?? 'bi-window'"></i> {{ title }}
+      <i [class]="application.iconName ?? 'bi-window'"></i>
+      {{ application.title }}
     </div>
     <div>
       <button
         type="button"
         class="btn h-100 btn-sm text-white bi-dash-lg"
+        (click)="minimize()"
       ></button>
       <button
         type="button"
         class="btn h-100 btn-sm text-white bi-square"
+        (click)="maximize()"
       ></button>
       <button
         type="button"
@@ -23,5 +27,9 @@
       ></button>
     </div>
   </header>
-  <iframe class="flex-fill" [src]="src" [title]="title"></iframe>
+  <iframe
+    class="flex-fill"
+    [src]="application.src"
+    [title]="application.title"
+  ></iframe>
 </div>

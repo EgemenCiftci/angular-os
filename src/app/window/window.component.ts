@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AppService } from '../app.service';
+import { Application } from '../application';
 
 @Component({
   selector: 'app-window',
@@ -7,16 +8,21 @@ import { AppService } from '../app.service';
   styleUrls: ['./window.component.css'],
 })
 export class WindowComponent implements OnInit {
-  @Input() iconName: string = 'bi-window';
-  @Input() title: string;
-  @Input() src: any;
-  @Input() id: number;
+  @Input() application: Application;
 
   constructor(private appService: AppService) {}
 
   ngOnInit() {}
 
   close() {
-    this.appService.removeWindow(this.id);
+    this.appService.removeWindow(this.application);
+  }
+
+  minimize() {
+    this.application.isHidden = true;
+  }
+
+  maximize() {
+    this.application.isMaximized = true;
   }
 }
