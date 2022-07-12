@@ -1,8 +1,8 @@
 import { Directive, ViewContainerRef } from '@angular/core';
 
 @Directive({
-  selector: '[appWindowHost]',
+  selector: '[appContentHost]',
 })
-export class WindowHostDirective {
+export class ContentHostDirective {
   constructor(public viewContainerRef: ViewContainerRef) {}
 }

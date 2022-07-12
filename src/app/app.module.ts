@@ -12,7 +12,7 @@ import { AppComponent } from './app.component';
 import { WindowComponent } from './components/window/window.component';
 import { MainComponent } from './components/main/main.component';
 import { LoginComponent } from './components/login/login.component';
-import { WindowHostDirective } from './directives/window-host.directive';
+import { ContentHostDirective } from './directives/content-host.directive';
 import { LauncherComponent } from './components/main/launcher/launcher.component';
 import { SettingsComponent } from './components/settings/settings.component';
 
@@ -33,7 +33,7 @@ import { SettingsComponent } from './components/settings/settings.component';
     LauncherComponent,
     WindowComponent,
     SettingsComponent,
-    WindowHostDirective,
+    ContentHostDirective,
   ],
   bootstrap: [AppComponent],
 })

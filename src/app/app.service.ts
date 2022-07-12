@@ -45,7 +45,9 @@ export class AppService {
         break;
       case 'object':
         application.isIframe = false;
-        this.injectSettingsComponent(windowRef);
+        windowRef.instance.viewContainerRef$.subscribe((f) =>
+          f.createComponent<SettingsComponent>(SettingsComponent as any)
+        );
         break;
       default:
         console.error('Invalid src!');
@@ -62,10 +64,5 @@ export class AppService {
       this.container.remove(this.container.indexOf(windowRef.hostView));
       this.windowComponentRefs.delete(application.id);
     }
-  }
-
-  injectSettingsComponent(windowRef: ComponentRef<WindowComponent>) {
-    const container = windowRef.instance.windowHost.viewContainerRef;
-    container.createComponent<SettingsComponent>(SettingsComponent as any);
   }
 }

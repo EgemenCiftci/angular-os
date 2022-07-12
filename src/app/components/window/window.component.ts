@@ -1,7 +1,14 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  ViewChild,
+  ViewContainerRef,
+} from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { AppService } from '../../app.service';
 import { Application } from '../../application';
-import { WindowHostDirective } from '../../directives/window-host.directive';
+import { ContentHostDirective } from '../../directives/content-host.directive';
 
 @Component({
   selector: 'app-window',
@@ -10,12 +17,15 @@ import { WindowHostDirective } from '../../directives/window-host.directive';
 })
 export class WindowComponent implements OnInit {
   @Input() application: Application;
-  @ViewChild(WindowHostDirective, { static: true })
-  windowHost!: WindowHostDirective;
+  @ViewChild(ContentHostDirective, { static: true })
+  contentHost!: ContentHostDirective;
+  viewContainerRef$ = new BehaviorSubject<ViewContainerRef>(undefined);
 
   constructor(private appService: AppService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.viewContainerRef$.next(this.contentHost.viewContainerRef);
+  }
 
   close() {
     this.appService.removeWindow(this.application);

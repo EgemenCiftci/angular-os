@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { AppService } from '../../app.service';
-import { WindowHostDirective } from '../../directives/window-host.directive';
+import { ContentHostDirective } from '../../directives/content-host.directive';
 
 @Component({
   selector: 'app-main',
@@ -8,12 +8,12 @@ import { WindowHostDirective } from '../../directives/window-host.directive';
   styleUrls: ['./main.component.css'],
 })
 export class MainComponent implements OnInit {
-  @ViewChild(WindowHostDirective, { static: true })
-  windowHost!: WindowHostDirective;
+  @ViewChild(ContentHostDirective, { static: true })
+  contentHost!: ContentHostDirective;
 
   constructor(private appService: AppService) {}
 
   ngOnInit() {
-    this.appService.container = this.windowHost.viewContainerRef;
+    this.appService.container = this.contentHost.viewContainerRef;
   }
 }
