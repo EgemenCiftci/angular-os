@@ -1,4 +1,5 @@
 import {
+  AfterViewInit,
   Component,
   Input,
   OnInit,
@@ -15,15 +16,17 @@ import { ContentHostDirective } from '../../directives/content-host.directive';
   templateUrl: './window.component.html',
   styleUrls: ['./window.component.css'],
 })
-export class WindowComponent implements OnInit {
+export class WindowComponent implements OnInit, AfterViewInit {
   @Input() application: Application;
-  @ViewChild(ContentHostDirective, { static: true })
+  @ViewChild(ContentHostDirective)
   contentHost!: ContentHostDirective;
   viewContainerRef$ = new BehaviorSubject<ViewContainerRef>(undefined);
 
   constructor(private appService: AppService) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  ngAfterViewInit(): void {
     this.viewContainerRef$.next(this.contentHost.viewContainerRef);
   }
 

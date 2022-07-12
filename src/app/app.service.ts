@@ -37,21 +37,20 @@ export class AppService {
     application.id = id;
 
     switch (application.title) {
-      default:
-        application.src = this.sanitizer.bypassSecurityTrustResourceUrl(
-          application.src
-        );
-        windowRef.instance.application = application;
-        this.windowComponentRefs.set(id, windowRef);
-        break;
       case 'Settings':
-        windowRef.instance.application = application;
-        this.windowComponentRefs.set(id, windowRef);
         windowRef.instance.viewContainerRef$.subscribe((f) =>
           f.createComponent<SettingsComponent>(SettingsComponent as any)
         );
         break;
+      default:
+        application.src = this.sanitizer.bypassSecurityTrustResourceUrl(
+          application.src
+        );
+        break;
     }
+
+    windowRef.instance.application = application;
+    this.windowComponentRefs.set(id, windowRef);
   }
 
   removeWindow(application: Application) {
