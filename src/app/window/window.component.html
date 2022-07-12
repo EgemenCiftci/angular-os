@@ -3,6 +3,7 @@
   cdkDrag
   cdkDragBoundary=".drag-boundary"
   [style.visibility]="application.isHidden ? 'hidden' : 'visible'"
+  [ngClass]="application.isMaximized ? 'window-maximized' : 'window-normal'"
 >
   <header class="d-flex flex-row text-white" cdkDragHandle>
     <div class="flex-fill h-100 p-1">
@@ -16,9 +17,16 @@
         (click)="minimize()"
       ></button>
       <button
+        *ngIf="!application.isMaximized"
         type="button"
-        class="btn h-100 btn-sm text-white bi-square"
+        class="btn h-100 btn-sm text-white bi-fullscreen"
         (click)="maximize()"
+      ></button>
+      <button
+        *ngIf="application.isMaximized"
+        type="button"
+        class="btn h-100 btn-sm text-white bi-fullscreen-exit"
+        (click)="restore()"
       ></button>
       <button
         type="button"

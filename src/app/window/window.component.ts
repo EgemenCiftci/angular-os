@@ -25,4 +25,8 @@ export class WindowComponent implements OnInit {
   maximize() {
     this.application.isMaximized = true;
   }
+
+  restore() {
+    this.application.isMaximized = false;
+  }
 }

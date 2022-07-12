@@ -1,13 +1,23 @@
 .window {
-  height: 300px;
-  width: 300px;
   background-color: white;
-  left: 10px;
-  top: 10px;
   z-index: 100000;
 }
 
 header {
   height: 32px;
   background-color: black;
+}
+
+.window-normal {
+  height: 300px;
+  width: 300px;
+  left: 10px;
+  top: 10px;
+}
+
+.window-maximized {
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
 }
