@@ -45,10 +45,12 @@ export class AppService {
         break;
       case 'object':
         application.isIframe = false;
+        windowRef.instance.application = application;
+        this.windowComponentRefs.set(id, windowRef);
         windowRef.instance.viewContainerRef$.subscribe((f) =>
           f.createComponent<SettingsComponent>(SettingsComponent as any)
         );
-        break;
+        return;
       default:
         console.error('Invalid src!');
         return;

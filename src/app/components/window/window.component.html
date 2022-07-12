@@ -2,13 +2,13 @@
   class="window d-flex flex-column user-select-none position-absolute"
   cdkDrag
   cdkDragBoundary=".drag-boundary"
-  [style.visibility]="application.isHidden ? 'hidden' : 'visible'"
-  [ngClass]="application.isMaximized ? 'window-maximized' : 'window-normal'"
+  [style.visibility]="application?.isHidden ? 'hidden' : 'visible'"
+  [ngClass]="application?.isMaximized ? 'window-maximized' : 'window-normal'"
 >
   <header class="d-flex flex-row text-white" cdkDragHandle>
     <div class="flex-fill h-100 p-1">
-      <i [class]="application.iconName ?? 'bi-window'"></i>
-      {{ application.title }}
+      <i [class]="application?.iconName ?? 'bi-window'"></i>
+      {{ application?.title }}
     </div>
     <div>
       <button
@@ -17,13 +17,13 @@
         (click)="minimize()"
       ></button>
       <button
-        *ngIf="!application.isMaximized"
+        *ngIf="!application?.isMaximized"
         type="button"
         class="btn h-100 btn-sm text-white bi-fullscreen"
         (click)="maximize()"
       ></button>
       <button
-        *ngIf="application.isMaximized"
+        *ngIf="application?.isMaximized"
         type="button"
         class="btn h-100 btn-sm text-white bi-fullscreen-exit"
         (click)="restore()"
@@ -36,12 +36,12 @@
     </div>
   </header>
   <iframe
-    *ngIf="application.isIframe"
+    *ngIf="application?.isIframe"
     class="flex-fill"
-    [src]="application.src"
-    [title]="application.title"
+    [src]="application?.src"
+    [title]="application?.title"
   ></iframe>
-  <div *ngIf="!application.isIframe" class="flex-fill">
+  <div *ngIf="!application?.isIframe" class="flex-fill">
     <ng-template appContentHost></ng-template>
   </div>
 </div>
