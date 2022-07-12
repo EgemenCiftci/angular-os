@@ -18,10 +18,12 @@ export class AppService {
       src: 'https://www.online-calculator.com/full-screen-calculator/',
       title: 'Calculator',
       iconName: 'bi-calculator-fill',
+      isIframe: true,
     },
     {
       src: 'https://www.sozcu.com.tr/',
       title: 'Web Site',
+      isIframe: true,
     },
   ];
 
@@ -34,30 +36,22 @@ export class AppService {
     const id = Date.now();
     application.id = id;
 
-    const srcType = typeof application.src;
-
-    switch (srcType) {
-      case 'string':
-        application.isIframe = true;
+    switch (application.title) {
+      default:
         application.src = this.sanitizer.bypassSecurityTrustResourceUrl(
           application.src
         );
+        windowRef.instance.application = application;
+        this.windowComponentRefs.set(id, windowRef);
         break;
-      case 'object':
-        application.isIframe = false;
+      case 'Settings':
         windowRef.instance.application = application;
         this.windowComponentRefs.set(id, windowRef);
         windowRef.instance.viewContainerRef$.subscribe((f) =>
           f.createComponent<SettingsComponent>(SettingsComponent as any)
         );
-        return;
-      default:
-        console.error('Invalid src!');
-        return;
+        break;
     }
-
-    windowRef.instance.application = application;
-    this.windowComponentRefs.set(id, windowRef);
   }
 
   removeWindow(application: Application) {

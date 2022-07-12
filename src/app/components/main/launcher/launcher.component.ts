@@ -28,7 +28,15 @@ export class LauncherComponent implements OnInit {
   }
 
   showSettings() {
-    const application = new Application(SettingsComponent);
+    const application = new Application(
+      undefined,
+      undefined,
+      'Settings',
+      undefined,
+      false,
+      false,
+      false
+    );
     this.appService.addWindow(application);
   }
 }
