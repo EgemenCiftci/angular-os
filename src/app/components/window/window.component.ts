@@ -1,6 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { AppService } from '../../app.service';
 import { Application } from '../../application';
+import { WindowHostDirective } from '../../directives/window-host.directive';
 
 @Component({
   selector: 'app-window',
@@ -9,6 +10,8 @@ import { Application } from '../../application';
 })
 export class WindowComponent implements OnInit {
   @Input() application: Application;
+  @ViewChild(WindowHostDirective, { static: true })
+  windowHost!: WindowHostDirective;
 
   constructor(private appService: AppService) {}
 

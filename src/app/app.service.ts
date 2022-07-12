@@ -1,6 +1,7 @@
 import { ComponentRef, Injectable, ViewContainerRef } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Application } from './application';
+import { SettingsComponent } from './components/settings/settings.component';
 import { WindowComponent } from './components/window/window.component';
 
 @Injectable({
@@ -32,9 +33,25 @@ export class AppService {
     );
     const id = Date.now();
     application.id = id;
-    application.src = this.sanitizer.bypassSecurityTrustResourceUrl(
-      application.src
-    );
+
+    const srcType = typeof application.src;
+
+    switch (srcType) {
+      case 'string':
+        application.isIframe = true;
+        application.src = this.sanitizer.bypassSecurityTrustResourceUrl(
+          application.src
+        );
+        break;
+      case 'object':
+        application.isIframe = false;
+        this.injectSettingsComponent(windowRef);
+        break;
+      default:
+        console.error('Invalid src!');
+        return;
+    }
+
     windowRef.instance.application = application;
     this.windowComponentRefs.set(id, windowRef);
   }
@@ -47,5 +64,8 @@ export class AppService {
     }
   }
 
-  showSettings() {}
+  injectSettingsComponent(windowRef: ComponentRef<WindowComponent>) {
+    const container = windowRef.instance.windowHost.viewContainerRef;
+    container.createComponent<SettingsComponent>(SettingsComponent as any);
+  }
 }

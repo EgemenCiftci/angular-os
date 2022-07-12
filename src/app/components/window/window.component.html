@@ -36,8 +36,10 @@
     </div>
   </header>
   <iframe
+    *ngIf="application.isIframe"
     class="flex-fill"
     [src]="application.src"
     [title]="application.title"
   ></iframe>
+  <ng-template *ngIf="!application.isIframe" appWindowHost></ng-template>
 </div>
