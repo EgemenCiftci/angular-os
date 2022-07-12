@@ -41,5 +41,7 @@
     [src]="application.src"
     [title]="application.title"
   ></iframe>
-  <ng-template *ngIf="!application.isIframe" appContentHost></ng-template>
+  <div *ngIf="!application.isIframe" class="flex-fill">
+    <ng-template appContentHost></ng-template>
+  </div>
 </div>
