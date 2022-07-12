@@ -10,9 +10,9 @@ export class MainComponent implements OnInit {
   @ViewChild('windowHost', { read: ViewContainerRef })
   container: ViewContainerRef;
 
-  constructor(private appService: AppService) {
-    appService.container = this.container;
-  }
+  constructor(private appService: AppService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.appService.container = this.container;
+  }
 }
