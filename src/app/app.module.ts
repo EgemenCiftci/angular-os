@@ -12,6 +12,7 @@ import { LauncherComponent } from './main/launcher/launcher.component';
 import { WindowComponent } from './window/window.component';
 import { MainComponent } from './main/main.component';
 import { LoginComponent } from './login/login.component';
+import { WindowHostDirective } from './directives/window-host.directive';
 
 @NgModule({
   imports: [
@@ -29,6 +30,7 @@ import { LoginComponent } from './login/login.component';
     LoginComponent,
     LauncherComponent,
     WindowComponent,
+    WindowHostDirective,
   ],
   bootstrap: [AppComponent],
 })
