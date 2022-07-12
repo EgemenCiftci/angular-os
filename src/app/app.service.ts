@@ -1,7 +1,7 @@
 import { ComponentRef, Injectable, ViewContainerRef } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Application } from './application';
-import { WindowComponent } from './window/window.component';
+import { WindowComponent } from './components/window/window.component';
 
 @Injectable({
   providedIn: 'root',
@@ -46,4 +46,6 @@ export class AppService {
       this.windowComponentRefs.delete(application.id);
     }
   }
+
+  showSettings() {}
 }

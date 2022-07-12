@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
-import { AppService } from '../app.service';
-import { WindowHostDirective } from '../directives/window-host.directive';
+import { AppService } from '../../app.service';
+import { WindowHostDirective } from '../../directives/window-host.directive';
 
 @Component({
   selector: 'app-main',

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AppService } from '../../app.service';
-import { Application } from '../../application';
+import { AppService } from '../../../app.service';
+import { Application } from '../../../application';
+import { SettingsComponent } from '../../settings/settings.component';
 
 @Component({
   selector: 'app-launcher',
@@ -24,5 +25,10 @@ export class LauncherComponent implements OnInit {
 
   restoreApplication(application: Application) {
     application.isHidden = false;
+  }
+
+  showSettings() {
+    const application = new Application(SettingsComponent);
+    this.appService.addWindow(application);
   }
 }

@@ -8,11 +8,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
 import { AppComponent } from './app.component';
-import { LauncherComponent } from './main/launcher/launcher.component';
-import { WindowComponent } from './window/window.component';
-import { MainComponent } from './main/main.component';
-import { LoginComponent } from './login/login.component';
+
+import { WindowComponent } from './components/window/window.component';
+import { MainComponent } from './components/main/main.component';
+import { LoginComponent } from './components/login/login.component';
 import { WindowHostDirective } from './directives/window-host.directive';
+import { LauncherComponent } from './components/main/launcher/launcher.component';
+import { SettingsComponent } from './components/settings/settings.component';
 
 @NgModule({
   imports: [
@@ -30,6 +32,7 @@ import { WindowHostDirective } from './directives/window-host.directive';
     LoginComponent,
     LauncherComponent,
     WindowComponent,
+    SettingsComponent,
     WindowHostDirective,
   ],
   bootstrap: [AppComponent],

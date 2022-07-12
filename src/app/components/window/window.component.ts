@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { AppService } from '../app.service';
-import { Application } from '../application';
+import { AppService } from '../../app.service';
+import { Application } from '../../application';
 
 @Component({
   selector: 'app-window',
