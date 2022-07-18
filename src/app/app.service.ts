@@ -1,7 +1,7 @@
 import { ComponentRef, Injectable, ViewContainerRef } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Application } from './application';
-import { SettingsComponent } from './components/settings/settings.component';
+import { NotepadComponent } from './components/notepad/notepad.component';
 import { WindowComponent } from './components/window/window.component';
 
 @Injectable({
@@ -26,7 +26,7 @@ export class AppService {
       isIframe: true,
     },
     {
-      src: SettingsComponent as any,
+      src: NotepadComponent as any,
       title: 'Window (Component)',
       isIframe: false,
     },
