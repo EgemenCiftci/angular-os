@@ -21,7 +21,7 @@ export class AppService {
       isIframe: true,
     },
     {
-      src: 'https://www.sozcu.com.tr/',
+      src: 'https://www.gamespot.com/',
       title: 'Web Site',
       isIframe: true,
     },
