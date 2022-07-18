@@ -22,8 +22,13 @@ export class AppService {
     },
     {
       src: 'https://www.gamespot.com/',
-      title: 'Web Site',
+      title: 'Window (IFrame)',
       isIframe: true,
+    },
+    {
+      src: SettingsComponent as any,
+      title: 'Window (Component)',
+      isIframe: false,
     },
   ];
 
@@ -36,17 +41,14 @@ export class AppService {
     const id = Date.now();
     application.id = id;
 
-    switch (application.title) {
-      case 'Settings':
-        windowRef.instance.viewContainerRef$.subscribe((f) =>
-          f.createComponent<SettingsComponent>(SettingsComponent as any)
-        );
-        break;
-      default:
-        application.src = this.sanitizer.bypassSecurityTrustResourceUrl(
-          application.src
-        );
-        break;
+    if (application.isIframe) {
+      application.src = this.sanitizer.bypassSecurityTrustResourceUrl(
+        application.src
+      );
+    } else {
+      windowRef.instance.viewContainerRef$.subscribe((f) =>
+        f.createComponent(application.src)
+      );
     }
 
     windowRef.instance.application = application;

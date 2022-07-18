@@ -29,7 +29,7 @@ export class LauncherComponent implements OnInit {
 
   showSettings() {
     const application = new Application(
-      undefined,
+      SettingsComponent as any,
       undefined,
       'Settings',
       undefined,
