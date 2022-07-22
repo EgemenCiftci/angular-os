@@ -5,7 +5,6 @@ export class Application {
     public title?: string,
     public iconName?: string,
     public isHidden?: boolean,
-    public isMaximized?: boolean,
-    public isIframe?: boolean
+    public isMaximized?: boolean
   ) {}
 }

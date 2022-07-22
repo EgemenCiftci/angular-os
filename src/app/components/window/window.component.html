@@ -35,13 +35,7 @@
       ></button>
     </div>
   </header>
-  <iframe
-    *ngIf="application?.isIframe"
-    class="flex-fill"
-    [src]="application?.src"
-    [title]="application?.title"
-  ></iframe>
-  <div *ngIf="!application?.isIframe" class="flex-fill">
+  <div class="flex-fill">
     <ng-template appContentHost></ng-template>
   </div>
 </div>

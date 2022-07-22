@@ -16,6 +16,7 @@ import { ContentHostDirective } from './directives/content-host.directive';
 import { LauncherComponent } from './components/main/launcher/launcher.component';
 import { SettingsComponent } from './components/settings/settings.component';
 import { NotepadComponent } from './components/notepad/notepad.component';
+import { BrowserComponent } from './components/browser/browser.component';
 
 @NgModule({
   imports: [
@@ -35,6 +36,7 @@ import { NotepadComponent } from './components/notepad/notepad.component';
     WindowComponent,
     SettingsComponent,
     NotepadComponent,
+    BrowserComponent,
     ContentHostDirective,
   ],
   bootstrap: [AppComponent],

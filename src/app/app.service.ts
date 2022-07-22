@@ -1,6 +1,7 @@
 import { ComponentRef, Injectable, ViewContainerRef } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Application } from './application';
+import { BrowserComponent } from './components/browser/browser.component';
 import { NotepadComponent } from './components/notepad/notepad.component';
 import { WindowComponent } from './components/window/window.component';
 
@@ -15,20 +16,14 @@ export class AppService {
   >();
   applications: Application[] = [
     {
-      src: 'https://www.online-calculator.com/full-screen-calculator/',
-      title: 'Calculator',
-      iconName: 'bi-calculator-fill',
-      isIframe: true,
-    },
-    {
-      src: 'https://www.gamespot.com/',
-      title: 'Window (IFrame)',
-      isIframe: true,
+      src: BrowserComponent as any,
+      title: 'Browser',
+      iconName: 'bi-browser-chrome',
     },
     {
       src: NotepadComponent as any,
-      title: 'Window (Component)',
-      isIframe: false,
+      title: 'Notepad',
+      iconName: 'bi-journal',
     },
   ];
 
@@ -41,15 +36,9 @@ export class AppService {
     const id = Date.now();
     application.id = id;
 
-    if (application.isIframe) {
-      application.src = this.sanitizer.bypassSecurityTrustResourceUrl(
-        application.src
-      );
-    } else {
-      windowRef.instance.viewContainerRef$.subscribe((f) =>
-        f.createComponent(application.src)
-      );
-    }
+    windowRef.instance.viewContainerRef$.subscribe((f) =>
+      f.createComponent(application.src)
+    );
 
     windowRef.instance.application = application;
     this.windowComponentRefs.set(id, windowRef);

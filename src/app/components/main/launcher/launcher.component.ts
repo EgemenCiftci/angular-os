@@ -34,7 +34,6 @@ export class LauncherComponent implements OnInit {
       'Settings',
       undefined,
       false,
-      false,
       false
     );
     this.appService.addWindow(application);
