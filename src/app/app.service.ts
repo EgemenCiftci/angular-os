@@ -1,5 +1,4 @@
 import { ComponentRef, Injectable, ViewContainerRef } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
 import { Application } from './application';
 import { BrowserComponent } from './components/browser/browser.component';
 import { NotepadComponent } from './components/notepad/notepad.component';
@@ -27,7 +26,7 @@ export class AppService {
     },
   ];
 
-  constructor(private sanitizer: DomSanitizer) {}
+  constructor() {}
 
   addWindow(application: Application) {
     const windowRef = this.container.createComponent<WindowComponent>(

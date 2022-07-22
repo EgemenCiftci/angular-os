@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-browser',
@@ -6,10 +7,21 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./browser.component.css'],
 })
 export class BrowserComponent implements OnInit {
-  @Input() src: string;
   @Input() title: string;
 
-  constructor() {}
+  srcVal: string;
+  safeSrc: SafeUrl;
+
+  get src(): string {
+    return this.srcVal;
+  }
+
+  set src(val: string) {
+    this.srcVal = val;
+    this.safeSrc = this.sanitizer.bypassSecurityTrustResourceUrl(this.srcVal);
+  }
+
+  constructor(private sanitizer: DomSanitizer) {}
 
   ngOnInit() {}
 }
