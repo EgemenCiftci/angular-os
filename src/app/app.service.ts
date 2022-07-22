@@ -17,7 +17,7 @@ export class AppService {
     {
       src: BrowserComponent as any,
       title: 'Browser',
-      iconName: 'bi-browser-chrome',
+      iconName: 'bi-globe',
     },
     {
       src: NotepadComponent as any,

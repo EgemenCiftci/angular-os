@@ -23,5 +23,7 @@ export class BrowserComponent implements OnInit {
 
   constructor(private sanitizer: DomSanitizer) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.src = 'https://www.gamespot.com/';
+  }
 }
