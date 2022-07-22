@@ -16,7 +16,7 @@ header {
 }
 
 .window-maximized {
-  height: 100%;
+  height: calc(100% - 48px);
   width: 100%;
   left: 0;
   top: 0;
