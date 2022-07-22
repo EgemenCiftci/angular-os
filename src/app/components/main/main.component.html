@@ -1,6 +1,10 @@
 <div
   class="drag-boundary d-flex flex-column h-100"
-  [style.background]="backgroundStyle"
+  [style.background-color]="backgroundColor"
+  [style.background-image]="backgroundImage"
+  [style.background-repeat]="backgroundRepeat"
+  [style.background-attachment]="backgroundAttachment"
+  [style.background-position]="backgroundPosition"
 >
   <div class="flex-fill">
     <ng-template appContentHost></ng-template>

@@ -11,19 +11,49 @@ export class MainComponent implements OnInit {
   @ViewChild(ContentHostDirective, { static: true })
   contentHost!: ContentHostDirective;
 
-  get backgroundStyle(): string {
-    let val = localStorage.getItem('backgroundStyle');
+  get backgroundColor(): string {
+    let val = localStorage.getItem('backgroundColor');
     if (!val) {
-      val = 'blue';
-      localStorage.setItem('backgroundStyle', val);
+      val = 'transparent';
+      localStorage.setItem('backgroundColor', val);
     }
     return val;
   }
 
-  set backgroundStyle(val: string) {
-    if (val !== localStorage.getItem('backgroundStyle')) {
-      localStorage.setItem('backgroundStyle', val);
+  get backgroundImage(): string {
+    let val = localStorage.getItem('backgroundImage');
+    if (!val) {
+      val = 'none';
+      localStorage.setItem('backgroundImage', val);
     }
+    return val;
+  }
+
+  get backgroundRepeat(): string {
+    let val = localStorage.getItem('backgroundRepeat');
+    if (!val) {
+      val = 'repeat';
+      localStorage.setItem('backgroundRepeat', val);
+    }
+    return val;
+  }
+
+  get backgroundAttachment(): string {
+    let val = localStorage.getItem('backgroundAttachment');
+    if (!val) {
+      val = 'scroll';
+      localStorage.setItem('backgroundAttachment', val);
+    }
+    return val;
+  }
+
+  get backgroundPosition(): string {
+    let val = localStorage.getItem('backgroundPosition');
+    if (!val) {
+      val = '0% 0%';
+      localStorage.setItem('backgroundPosition', val);
+    }
+    return val;
   }
 
   constructor(private appService: AppService) {}

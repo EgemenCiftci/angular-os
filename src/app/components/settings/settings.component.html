@@ -1,3 +1,44 @@
 <h1>Settings</h1>
-<label>Background Style</label>
-<input type="text" [(ngModel)]="backgroundStyle" />
+
+<label for="backgroundColor">Background Color:</label>
+<input name="backgroundColor" type="color" [(ngModel)]="backgroundColor" />
+
+<label for="backgroundImage">Background Image:</label>
+<select name="backgroundImage" [(ngModel)]="backgroundImage">
+  <option
+    value="url(data:image/gif;base64,R0lGODlhEAAQAMQAAORHHOVSKudfOulrSOp3WOyDZu6QdvCchPGolfO0o/XBs/fNwfjZ0frl3/zy7////wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAkAABAALAAAAAAQABAAAAVVICSOZGlCQAosJ6mu7fiyZeKqNKToQGDsM8hBADgUXoGAiqhSvp5QAnQKGIgUhwFUYLCVDFCrKUE1lBavAViFIDlTImbKC5Gm2hB0SlBCBMQiB0UjIQA7)"
+  >
+    Star
+  </option>
+  <option value="url(https://media.giphy.com/media/xuXzcHMkuwvf2/giphy.gif)">
+    Pikachu
+  </option>
+</select>
+
+<label for="backgroundRepeat">Background Repeat:</label>
+<select name="backgroundRepeat" [(ngModel)]="backgroundRepeat">
+  <option value="repeat">Repeat</option>
+  <option value="repeat-x">Repeat X</option>
+  <option value="repeat-y">Repeat Y</option>
+  <option value="no-repeat">No Repeat</option>
+</select>
+
+<label for="backgroundAttachment">Background Attachment:</label>
+<select name="backgroundAttachment" [(ngModel)]="backgroundAttachment">
+  <option value="scroll">Scroll</option>
+  <option value="fixed">Fixed</option>
+  <option value="local">Local</option>
+</select>
+
+<label for="backgroundPosition">Background Position:</label>
+<select name="backgroundPosition" [(ngModel)]="backgroundPosition">
+  <option value="left top">Left Top</option>
+  <option value="left bottom">Left Bottom</option>
+  <option value="left center">Left Center</option>
+  <option value="right top">Right Top</option>
+  <option value="right bottom">Right Bottom</option>
+  <option value="right center">Right Center</option>
+  <option value="center top">Center Top</option>
+  <option value="center center">Center Center</option>
+  <option value="center bottom">Center Bottom</option>
+</select>
