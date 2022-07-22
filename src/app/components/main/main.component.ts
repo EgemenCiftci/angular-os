@@ -10,12 +10,25 @@ import { ContentHostDirective } from '../../directives/content-host.directive';
 export class MainComponent implements OnInit {
   @ViewChild(ContentHostDirective, { static: true })
   contentHost!: ContentHostDirective;
-  backgroundStyle: string;
+
+  get backgroundStyle(): string {
+    let val = localStorage.getItem('backgroundStyle');
+    if (!val) {
+      val = 'blue';
+      localStorage.setItem('backgroundStyle', val);
+    }
+    return val;
+  }
+
+  set backgroundStyle(val: string) {
+    if (val !== localStorage.getItem('backgroundStyle')) {
+      localStorage.setItem('backgroundStyle', val);
+    }
+  }
 
   constructor(private appService: AppService) {}
 
   ngOnInit() {
     this.appService.container = this.contentHost.viewContainerRef;
-    this.backgroundStyle = localStorage.getItem('backgroundStyle') ?? 'blue';
   }
 }

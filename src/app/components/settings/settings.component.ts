@@ -6,7 +6,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./settings.component.css'],
 })
 export class SettingsComponent implements OnInit {
-  backgroundStyle: string;
+  get backgroundStyle(): string {
+    let val = localStorage.getItem('backgroundStyle');
+    if (!val) {
+      val = 'blue';
+      localStorage.setItem('backgroundStyle', val);
+    }
+    return val;
+  }
+
+  set backgroundStyle(val: string) {
+    if (val !== localStorage.getItem('backgroundStyle')) {
+      localStorage.setItem('backgroundStyle', val);
+    }
+  }
 
   constructor() {}
 
