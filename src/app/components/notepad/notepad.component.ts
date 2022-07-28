@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NotepadComponent implements OnInit {
   text: string;
+  fileName = 'file.txt';
 
   constructor() {}
 
@@ -18,7 +19,5 @@ export class NotepadComponent implements OnInit {
     reader.readAsText(event.target.files[0]);
   }
 
-  async save() {
-    const handle = await (window as any).showSaveFilePicker();
-  }
+  save() {}
 }
