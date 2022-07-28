@@ -14,7 +14,8 @@ export class NotepadComponent implements OnInit {
 
   open(event: any) {
     const reader = new FileReader();
-    reader.readAsText(event.file);
+    reader.onload = (f) => (this.text = f.target.result as string);
+    reader.readAsText(event.target.files[0]);
   }
 
   async save() {
