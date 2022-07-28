@@ -1,1 +1,12 @@
-<textarea class="w-100 h-100"></textarea>
+<button onclick="document.getElementById('file_upload').click()">
+  Open...
+</button>
+<input
+  type="file"
+  id="file_upload"
+  accept=".txt, .csv"
+  hidden
+  (change)="open($event)"
+/>
+<button (click)="save()">Save...</button>
+<textarea class="w-100 h-100" [(ngModel)]="text"></textarea>
