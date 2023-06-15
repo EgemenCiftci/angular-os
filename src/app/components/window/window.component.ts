@@ -6,7 +6,7 @@ import {
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { AppService } from '../../app.service';
 import { Application } from '../../application';
 import { ContentHostDirective } from '../../directives/content-host.directive';
